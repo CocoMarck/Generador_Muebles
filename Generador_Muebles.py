@@ -37,11 +37,12 @@ def Menu_Muebles():
             option = None
     
         # Menu - Opcion elegida
+        furniture = False
         if option == '1':
-            Corner_shelving()
+            furniture = Corner_shelving()
 
         elif option == '2':
-            Table()
+            furniture = Table()
             
         elif option == '0':
             loop = False
@@ -51,9 +52,23 @@ def Menu_Muebles():
             
         else:
             Continue(
-                option=option,
+                option,
                 message_error=True
             )
+        
+        # Imprimir datos para armar el mueble
+        if type(furniture) is str:
+            input(
+                furniture + '\n\n'
+                f"{Lang('continue_enter')}..."
+            )
+        elif furniture == None:
+            input(
+                'ERROR\n'
+                f"{Lang('continue_enter')}..."
+            )
+        else:
+            pass
 
 
 def Corner_shelving():
@@ -77,22 +92,14 @@ def Corner_shelving():
         type(width) is float or
         type(height) is float
     ):
-        corner_shelving = Muebles.Corner_shelving(
+        return Muebles.Corner_shelving(
             thickness=thickness,
             width=width,
             height=height,
             round_number=False
         )
-        input(
-            corner_shelving + '\n'
-            '\n'
-            f'{Lang("continue_enter")}...'
-        )
     else:
-        input(
-            'ERROR\n'
-            f'{Lang("continue_enter")}...'
-        )
+        return None
 
 
 def Table():
@@ -116,22 +123,14 @@ def Table():
         type(width) is float or
         type(height) is float
     ):
-        table = Muebles.Table(
+        return Muebles.Table(
             thickness=thickness,
             width=width,
             height=height,
             round_number=False
         )
-        input(
-            table + '\n'
-            '\n'
-            f'{Lang("continue_enter")}...'
-        )
     else:
-        input(
-            'ERROR\n'
-            f'{Lang("continue_enter")}...'
-        )
+        return None
 
 
 if __name__ == '__main__':

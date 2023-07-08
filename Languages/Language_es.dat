@@ -112,12 +112,15 @@ measures_corner_shelving=Medidas de esquinero
 measures_table=Medidas de mesa
 
 # Medidas
+suggest_base_for_parts=Base sugerida para obtener piezas
+size=Tamaño
 measures=Medidas
 thickness=Grosor
 width=Ancho
 height=Altura
 
 # Partes de objetos
+parts=Piezas
 part_main=Parte Principal
 part_support=Parte de soporte
 paw=Pata

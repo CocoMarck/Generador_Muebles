@@ -115,12 +115,15 @@ measures_corner_shelving=Corner shelving measurements
 measures_table=Table measurements
 
 # Measures
+suggest_base_for_parts=Suggested base for getting parts
+size=Size
 measures=Measures
 thickness=Thickness
 width=Width
 height=Height
 
 # Parts of objects
+parts=Parts
 part_main=Main part
 part_support=Support part
 paw=Paw

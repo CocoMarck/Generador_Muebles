@@ -44,23 +44,58 @@ def Corner_shelving(
         square = round(square)
         rectangle = round(rectangle)
     else:
+        pass
         # No redondear, pero si solo mostrar cuatro decimales
-        square = round(square, 4)
-        rectangle = round(rectangle, 4)
+        # square = round(square, 4)
+        # rectangle = round(rectangle, 4)
+        
+    # Base sugerida para sacar las piezas
+    list_width = [square, square, width, thickness*2]
+    base_width = 0.0
+    for number in list_width:
+        base_width += float(number)
+    
+    list_height = [square, rectangle, rectangle, rectangle]
+    base_height = 0.0
+    for number in list_height:
+        base_height += float(number)
+
+    if base_width < base_height:
+        # Obtener el numero mas alto de una lista de numeros
+        base_height = None
+        for number in list_height:
+            if (base_height is None or number > base_height):
+                base_height = number
+    else:
+        # Obtener el numero mas alto de una lista de numeros
+        base_width = None
+        for number in list_width:
+            if (base_width is None or number > base_width):
+                base_width = number
+
+    # Para que la base pueda tener un rango de error:
+    base_width = round(base_width * 1.1)
+    base_height = round(base_height * 1.1)
     
     # Esquinero - Texto terminado, y texto final
     text_shelf = f'{square}cm X {square}cm'
     text_wall_type1 = f'{square}cm X {rectangle}cm'
     text_wall_type2 = f'{width}cm X {rectangle}cm'
     text_support = f'{thickness*2}cm X {rectangle}cm'
+    text_base = f'{base_width}cm X {base_height}cm'
     
     text_corner_shelving = (
         f'{Lang("measures_corner_shelving")}\n'
         f'    {Lang("thickness")}: {thickness}\n'
-        f'    {Lang("width")}: {width}\n'
-        f'    {Lang("height")}: {height}\n'
+        f'    {Lang("width")} X {Lang("height")}: '
+        f'{width} X {height}\n'
+        '\n'
+        f'{Lang("suggest_base_for_parts")}:\n'
+        f'    {Lang("thickness")}: {thickness}\n'
+        f'    {Lang("size")}: {text_base}\n'
         '\n'
         '\n'
+        f'{Lang("parts")}:\n'
         f'{count_shelf} {Lang("shelf_square")}\n'
         f'    {text_shelf}\n'
         '\n'
@@ -122,25 +157,60 @@ def Table(
         part_support0 = round(part_support0)
         part_support1 = round(part_support1)
     else:
+        pass
         # No redondear, pero si solo mostrar cuatro decimales
-        part_main = round(part_main, 4)
-        part_support = round(part_support, 4)
-        part_support0 = round(part_support0, 4)
-        part_support1 = round(part_support1, 4)
+        # part_main = round(part_main, 4)
+        # part_support = round(part_support, 4)
+        # part_support0 = round(part_support0, 4)
+        # part_support1 = round(part_support1, 4)
+    
+    # Base sugerida para obtener las piezas
+    list_width = [width, part_support, part_support0, part_support0]
+    base_width = 0.0
+    for number in list_width:
+        base_width += float(number)
+    
+    list_height = [part_main, part_main, part_support1, height]
+    base_height = 0.0
+    for number in list_height:
+        base_height += float(number)
+
+    if base_width < base_height:
+        # Obtener el numero mas alto de una lista de numeros
+        base_height = None
+        for number in list_height:
+            if (base_height is None or number > base_height):
+                base_height = number
+    else:
+        # Obtener el numero mas alto de una lista de numeros
+        base_width = None
+        for number in list_width:
+            if (base_width is None or number > base_width):
+                base_width = number
+
+    # Para que la base pueda tener un rango de error:
+    base_width = round(base_width * 1.1)
+    base_height = round(base_height * 1.1)
     
     # Mesa - Texto Terminado
     text_main = f'{width}cm X {part_main}cm'
     text_support_type1 = f'{part_support}cm X {part_main}cm'
     text_support_type2 = f'{part_support0}cm X {part_support1}'
     text_leg = f'{part_support0}cm X {height}cm'
+    text_base = f'{base_width}cm X {base_height}cm'
     
     text_table = (
-        f'{Lang("measures_corner_shelving")}\n'
-        f'    Grosor: {thickness}\n'
-        f'    Achura: {width}\n'
-        f'    Altura: {height}\n'
+        f'{Lang("measures_table")}\n'
+        f'    {Lang("thickness")}: {thickness}\n'
+        f'    {Lang("width")} X {Lang("height")}: '
+        f'{width} X {height}\n'
+        '\n'
+        f'{Lang("suggest_base_for_parts")}:\n'
+        f'    {Lang("thickness")}: {thickness}\n'
+        f'    {Lang("size")}: {text_base}\n'
         '\n'
         '\n'
+        f'{Lang("parts")}:\n'
         f'1 {Lang("part_main")}\n'
         f'    {text_main}\n'
         '\n'
