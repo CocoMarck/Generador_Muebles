@@ -1,4 +1,4 @@
-from Modulos.Modulo_Language import get_text as Lang
+from .Modulo_Language import get_text as Lang
 
 
 def Corner_shelving(
