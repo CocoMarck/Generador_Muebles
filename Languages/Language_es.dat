@@ -8,6 +8,7 @@ start=Iniciar
 stop=Parar
 exit=Salir
 optional=Opcional
+of=de
 
 # Continuar
 continue=Continuar

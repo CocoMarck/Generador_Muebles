@@ -94,6 +94,7 @@ mode=Mode
 more_info=Show more information
 cmd=Command
 text=Text
+of=of
 
 # Install-App type text
 ver=Version
