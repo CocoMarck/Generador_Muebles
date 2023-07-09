@@ -50,24 +50,40 @@ def Corner_shelving(
         # rectangle = round(rectangle, 4)
         
     # Base sugerida para sacar las piezas
-    list_width = [square, square, width, thickness*2]
+    list_width = [
+        square*count_shelf, square, width, thickness*2
+        # Repisas, Pared tipo1, Pared tipo2, Soporte opcional
+    ]
     base_width = 0.0
     for number in list_width:
         base_width += float(number)
     
-    list_height = [square, rectangle, rectangle, rectangle]
+    list_height = [
+        square*count_shelf, rectangle, rectangle, rectangle
+        # Repisas, Pared tipo1, Pared tipo2, Soporte opcional
+    ]
     base_height = 0.0
     for number in list_height:
         base_height += float(number)
 
     if base_width < base_height:
         # Obtener el numero mas alto de una lista de numeros
+        list_height = [
+            square, rectangle, rectangle, rectangle
+            # Sin contar si hay mas de uno
+            # Repisas, Pared tipo1, Pared tipo2, Soporte opcional
+        ]
         base_height = None
         for number in list_height:
             if (base_height is None or number > base_height):
                 base_height = number
     else:
         # Obtener el numero mas alto de una lista de numeros
+        list_width = [
+            square, square, width, thickness*2
+            # Sin contar si hay mas de uno
+            # Repisas, Pared tipo1, Pared tipo2, Soporte opcional
+        ]
         base_width = None
         for number in list_width:
             if (base_width is None or number > base_width):
@@ -165,18 +181,29 @@ def Table(
         # part_support1 = round(part_support1, 4)
     
     # Base sugerida para obtener las piezas
-    list_width = [width, part_support, part_support0, part_support0]
+    list_width = [
+        width, part_support*2, part_support0*2, part_support0*4
+        # Principal, soporte tipo 1, sporte tipo 2, patas
+    ]
     base_width = 0.0
     for number in list_width:
         base_width += float(number)
     
-    list_height = [part_main, part_main, part_support1, height]
+    list_height = [
+        part_main, part_main*2, part_support1*2, height*4
+        # Principal, soporte tipo 1, sporte tipo 2, patas
+    ]
     base_height = 0.0
     for number in list_height:
         base_height += float(number)
 
     if base_width < base_height:
         # Obtener el numero mas alto de una lista de numeros
+        list_height = [
+            part_main, part_main, part_support1, height
+            # Sin contar si hay mas de uno.
+            # Principal, soporte tipo 1, sporte tipo 2, patas
+        ]
         base_height = None
         for number in list_height:
             if (base_height is None or number > base_height):
@@ -184,6 +211,11 @@ def Table(
     else:
         # Obtener el numero mas alto de una lista de numeros
         base_width = None
+        list_width = [
+            width, part_support, part_support0, part_support0
+            # Sin contar si hay mas de uno
+            # Principal, soporte tipo 1, sporte tipo 2, patas
+        ]
         for number in list_width:
             if (base_width is None or number > base_width):
                 base_width = number
@@ -195,7 +227,7 @@ def Table(
     # Mesa - Texto Terminado
     text_main = f'{width}cm X {part_main}cm'
     text_support_type1 = f'{part_support}cm X {part_main}cm'
-    text_support_type2 = f'{part_support0}cm X {part_support1}'
+    text_support_type2 = f'{part_support0}cm X {part_support1}cm'
     text_leg = f'{part_support0}cm X {height}cm'
     text_base = f'{base_width}cm X {base_height}cm'
     
