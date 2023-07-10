@@ -108,6 +108,7 @@ wait=Wait
 install=Install
 
 # Furniture
+get_furniture=Get furniture
 gen_furniture=Furniture builder
 corner_shelving=Corner shelving
 table=Table

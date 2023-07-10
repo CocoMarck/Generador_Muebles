@@ -48,24 +48,30 @@ class Window_Main(Gtk.Window):
     
     def evt_corner_shelving(self, widget):
         self.hide()
-        dialog = Dialog_corner_shelving(self)
+        dialog = Dialog_Furniture(self, furniture='corner_shelving')
         dialog.run()
         dialog.destroy()
         self.show_all()
     
     def evt_table(self, widget):
-        print()
+        self.hide()
+        dialog = Dialog_Furniture(self, furniture='table')
+        dialog.run()
+        dialog.destroy()
+        self.show_all()
     
     def evt_exit(self, widget):
         self.destroy()
 
 
-class Dialog_corner_shelving(Gtk.Dialog):
-    def __init__(self, parent):
+class Dialog_Furniture(Gtk.Dialog):
+    def __init__(self, parent, furniture='corner_shelving'):
         super().__init__(
-            title=Lang('corner_shelving'),
-            transient_for=parent, flags=0
+            title=Lang(furniture),
+            transient_for=parent, flags=0,
         )
+        self.furniture = furniture
+        #self.set_title(Lang(furniture))
         self.set_default_size(308, 128)
         
         # Contenedor Pincipal
@@ -123,7 +129,9 @@ class Dialog_corner_shelving(Gtk.Dialog):
         hbox.pack_end(self.entry_height, False, True, 0)
         
         # Seccion Vertical Final - Obtener mueble
-        self.button_get_furniture = Gtk.Button( label='Obtener mueble' )
+        self.button_get_furniture = Gtk.Button(
+            label=Lang('get_furniture')
+        )
         self.button_get_furniture.connect(
             'clicked', self.evt_get_furniture
         )
@@ -138,7 +146,7 @@ class Dialog_corner_shelving(Gtk.Dialog):
         text = entry.get_text().strip()
         entry.set_text(
             ''.join(
-                [ i for i in text if i in '0123456789']
+                [ i for i in text if i in '0123456789.']
             )
         )
     
@@ -163,11 +171,20 @@ class Dialog_corner_shelving(Gtk.Dialog):
             width = float(self.entry_width.get_text())
             height = float(self.entry_height.get_text())
             
-            text_furniture = Muebles.Corner_shelving(
-                thickness=thickness,
-                width=width,
-                height=height
-            )
+            # Eleccion del mueble, dependiendo del parametro furniture
+            if self.furniture == 'corner_shelving':
+                text_furniture = Muebles.Corner_shelving(
+                    thickness=thickness,
+                    width=width,
+                    height=height
+                )
+            elif self.furniture == 'table':
+                text_furniture = Muebles.Table(
+                    thickness=thickness,
+                    width=width,
+                    height=height
+                )
+                
         except:
             # Datos erroneos
             text_furniture = 'ERROR'

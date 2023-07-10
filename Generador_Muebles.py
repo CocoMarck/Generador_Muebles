@@ -39,10 +39,10 @@ def Menu_Muebles():
         # Menu - Opcion elegida
         furniture = False
         if option == '1':
-            furniture = Corner_shelving()
+            furniture = Furniture('corner_shelving')
 
         elif option == '2':
-            furniture = Table()
+            furniture = Furniture('table')
             
         elif option == '0':
             loop = False
@@ -71,15 +71,26 @@ def Menu_Muebles():
             pass
 
 
-def Corner_shelving():
+def Furniture(furniture='corner_shelving'):
     # Esquinero - Parte visual
     CleanScreen()
-    Title( Lang('corner_shelving') )
+    Title( Lang(furniture) )
 
     try:
         thickness = float( input(f'{Lang("thickness")}: ') )
         width = float( input(f'{Lang("width")}: ') )
         height = float( input(f'{Lang("height")}: ') )
+        
+        # Si el los valores son menores o iguales a cero
+        if (
+            thickness <= 0 or
+            width <= 0 or
+            height <= 0
+        ):
+            # Hacer que el valor a retornar sea el indicado en else
+            thickness, width, height = None, None, None
+        else:
+            pass
     except:
         thickness = None
         width = None
@@ -92,43 +103,20 @@ def Corner_shelving():
         type(width) is float or
         type(height) is float
     ):
-        return Muebles.Corner_shelving(
-            thickness=thickness,
-            width=width,
-            height=height,
-            round_number=False
-        )
-    else:
-        return None
-
-
-def Table():
-    # Mesa - Parte visual
-    CleanScreen()
-    Title( Lang('table') )
-
-    try:
-        thickness = float( input(f'{Lang("thickness")}: ') )
-        width = float( input(f'{Lang("width")}: ') )
-        height = float( input(f'{Lang("height")}: ') )
-    except:
-        thickness = None
-        width = None
-        height = None
-    
-    # Mesa - Opcion elegida
-    CleanScreen()
-    if (
-        type(thickness) is float or
-        type(width) is float or
-        type(height) is float
-    ):
-        return Muebles.Table(
-            thickness=thickness,
-            width=width,
-            height=height,
-            round_number=False
-        )
+        if furniture == 'corner_shelving':
+            return Muebles.Corner_shelving(
+                thickness=thickness,
+                width=width,
+                height=height,
+                round_number=False
+            )
+        elif furniture == 'table':
+            return Muebles.Table(
+                thickness=thickness,
+                width=width,
+                height=height,
+                round_number=False
+            )
     else:
         return None
 
