@@ -51,7 +51,7 @@ def Corner_shelving(
         
     # Base sugerida para sacar las piezas
     list_width = [
-        square*count_shelf, square, width, thickness*2
+        square, square, width, thickness*2
         # Repisas, Pared tipo1, Pared tipo2, Soporte opcional
     ]
     base_width = 0.0
@@ -69,7 +69,7 @@ def Corner_shelving(
     if base_width < base_height:
         # Obtener el numero mas alto de una lista de numeros
         list_height = [
-            square, rectangle, rectangle, rectangle
+            square*count_shelf, rectangle, rectangle, rectangle
             # Sin contar si hay mas de uno
             # Repisas, Pared tipo1, Pared tipo2, Soporte opcional
         ]
