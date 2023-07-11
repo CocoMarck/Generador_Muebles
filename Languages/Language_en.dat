@@ -12,6 +12,17 @@ stop=Stop
 exit=Exit
 optional=Optional
 
+# Only Text type text
+app=Application
+title=Title
+lang=Language
+mode=Mode
+more_info=Show more information
+cmd=Command
+text=Text
+of=of
+text&image=Text and Image
+
 # Text Type Continue
 continue=Continue
 continue_enter=Press enter and continue
@@ -84,17 +95,6 @@ cpu_use=CPU usage
 # Dispositives-Devices type text
 disp_audio=Audio device
 are_disp=These are the devices
-
-
-# Only Text type text
-app=Application
-title=Title
-lang=Language
-mode=Mode
-more_info=Show more information
-cmd=Command
-text=Text
-of=of
 
 # Install-App type text
 ver=Version

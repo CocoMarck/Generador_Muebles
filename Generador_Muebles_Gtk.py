@@ -1,7 +1,7 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
 from Interface import Modulo_Util_Gtk as Util_Gtk
 from Modulos import Modulo_Muebles as Muebles
@@ -190,13 +190,72 @@ class Dialog_Furniture(Gtk.Dialog):
             text_furniture = 'ERROR'
         
         self.hide()
-        dialog = Util_Gtk.Dialog_TextView(
+        dialog = Dialog_View_TextImage(
             self,
-            text=text_furniture
+            text=text_furniture,
+            image_from_file=f'./Images/furniture_{self.furniture}.png'
         )
         dialog.run()
         dialog.destroy()
         self.destroy()
+
+
+class Dialog_View_TextImage(Gtk.Dialog):
+    def __init__(
+        self, parent,
+        text=None, image_from_file=None
+    ):
+        super().__init__(
+            title=Lang('text&image'),
+            transient_for=parent, flags=0
+        )
+        self.set_default_size(512, 512)
+        
+        # Contenedor principal
+        hbox_main = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL, spacing=8
+        )
+        hbox_main.set_property('expand', True)
+        
+        # Seccion Horizontal de Text View
+        if text == None:
+            pass
+        else:
+            # Scroll
+            scroll_text = Gtk.ScrolledWindow()
+            scroll_text.set_hexpand(True)
+            scroll_text.set_vexpand(True)
+            hbox_main.pack_start(scroll_text, True, True, 0)
+            
+            # Text View - Texto
+            text_view = Gtk.TextView()
+            text_view.set_editable(False)
+            buffer_text = text_view.get_buffer()
+            buffer_text.set_text(text)
+            scroll_text.add(text_view)
+        
+        # Seccion Horizontal de Imagen
+        if image_from_file == None:
+            pass
+        else:
+            # Scroll
+            scroll_image = Gtk.ScrolledWindow()
+            scroll_image.set_hexpand(True)
+            scroll_image.set_vexpand(True)
+            hbox_main.pack_start(scroll_image, True, True, 0)
+            
+            # Text View - Texto
+            image = Gtk.Image()
+            pixbuf_image = GdkPixbuf.Pixbuf.new_from_file_at_size(
+                image_from_file, # Ruta de Imagen
+                256, 256 # Ancho X Alto
+            )
+            image.set_from_pixbuf(pixbuf_image)
+            scroll_image.add(image)
+        
+        # Fin, agregar contenido y mostrar todo
+        self.get_content_area().add(hbox_main)
+        self.show_all()
 
 
 win = Window_Main()

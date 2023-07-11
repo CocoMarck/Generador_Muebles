@@ -8,7 +8,17 @@ start=Iniciar
 stop=Parar
 exit=Salir
 optional=Opcional
+
+# Solo texto sin ordenar
+app=Aplicación
+title=Titulo
+lang=Lenguaje
+mode=Modo
+more_info=Mostrar mas información
+cmd=Comando
+text=Texto
 of=de
+text&image=Texto y Imagen
 
 # Continuar
 continue=Continuar
@@ -83,15 +93,6 @@ cpu_use=Uso de CPU
 disp_audio=Dispositivo de audio
 are_disp=Estos son los dispositivos
 
-
-# Solo texto sin ordenar
-app=Aplicación
-title=Titulo
-lang=Lenguaje
-mode=Modo
-more_info=Mostrar mas información
-cmd=Comando
-text=Texto
 
 # Texto para Install-App
 install=Instalar
