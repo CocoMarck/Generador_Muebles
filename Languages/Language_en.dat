@@ -122,6 +122,7 @@ measures=Measures
 thickness=Thickness
 width=Width
 height=Height
+cm=Centimeters
 
 # Parts of objects
 parts=Parts

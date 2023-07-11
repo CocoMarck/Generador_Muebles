@@ -90,7 +90,7 @@ class Dialog_Furniture(Gtk.Dialog):
         hbox.pack_start(label_thickness, False, True, 0)
         
         self.entry_thickness = Gtk.Entry()
-        self.entry_thickness.set_placeholder_text( Lang('thickness') )
+        self.entry_thickness.set_placeholder_text( Lang('cm') )
         self.entry_thickness.connect(
             'changed', self.on_entry_onlyNumber
         )
@@ -106,7 +106,7 @@ class Dialog_Furniture(Gtk.Dialog):
         hbox.pack_start(label_width, False, True, 0)
         
         self.entry_width = Gtk.Entry()
-        self.entry_width.set_placeholder_text( Lang('width') )
+        self.entry_width.set_placeholder_text( Lang('cm') )
         self.entry_width.connect(
             'changed', self.on_entry_onlyNumber
         )
@@ -122,7 +122,7 @@ class Dialog_Furniture(Gtk.Dialog):
         hbox.pack_start(label_height, False, True, 0)
         
         self.entry_height = Gtk.Entry()
-        self.entry_height.set_placeholder_text( Lang('height') )
+        self.entry_height.set_placeholder_text( Lang('cm') )
         self.entry_height.connect(
             'changed', self.on_entry_onlyNumber
         )
