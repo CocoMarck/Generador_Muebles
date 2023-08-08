@@ -198,12 +198,13 @@ class Dialog_View_TextImage(QDialog):
         self.setLayout(hbox_main)
         
         # Seccion Horizontal 1 - Text Edit
-        text_edit = QTextEdit( str(text).replace('\n', '<br>') )
+        text = str(text).replace('\n', '<br>')
+        text_edit = QTextEdit( text )
         text_edit.setReadOnly(True)
         hbox_main.addWidget(text_edit)
         
         # HBox Separador
-        hbox_main.addStretch()
+        #hbox_main.addStretch()
         
         # Seccion Horizontal 2 - Imagen
         label = QLabel()
@@ -215,7 +216,7 @@ class Dialog_View_TextImage(QDialog):
         hbox_main.addWidget(label)
         
         # HBox Separador - Para poner acomodada la imagen
-        hbox_main.addStretch()
+        #hbox_main.addStretch()
         
         # Fin Mostrar todo lo necesario
         self.show()

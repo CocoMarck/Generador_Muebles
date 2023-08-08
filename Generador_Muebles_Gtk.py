@@ -129,13 +129,13 @@ class Dialog_Furniture(Gtk.Dialog):
         hbox.pack_end(self.entry_height, False, True, 0)
         
         # Seccion Vertical Final - Obtener mueble
-        self.button_get_furniture = Gtk.Button(
+        button_get_furniture = Gtk.Button(
             label=Lang('get_furniture')
         )
-        self.button_get_furniture.connect(
+        button_get_furniture.connect(
             'clicked', self.evt_get_furniture
         )
-        vbox_main.pack_end(self.button_get_furniture, False, True, 16)
+        vbox_main.pack_end(button_get_furniture, False, True, 16)
         
         # Fin, Mostrar ventana y todo
         self.get_content_area().add(vbox_main)
