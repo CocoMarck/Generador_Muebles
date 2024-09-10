@@ -12,9 +12,9 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtGui import QDoubleValidator, QPixmap #, QIntValidator
 
-from Interface import Modulo_Util_Qt as Util_Qt
-from Modulos import Modulo_Muebles as Muebles
-from Modulos.Modulo_Language import get_text as Lang
+from interface import Modulo_Util_Qt as Util_Qt
+from logic import Modulo_Muebles as Muebles
+from data.Modulo_Language import get_text as Lang
 
 
 class Window_Main(QWidget):
@@ -177,7 +177,7 @@ class Dialog_Furniture(QDialog):
         Dialog_View_TextImage(
             self,
             text=text_furniture,
-            image_from_file=f'./Images/furniture_{self.furniture}.png'
+            image_from_file=f'./resources/images/furniture_{self.furniture}.png'
         ).exec()
         self.close()
 

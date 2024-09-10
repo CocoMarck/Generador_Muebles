@@ -1,16 +1,16 @@
-from Modulos import Modulo_Muebles as Muebles
+from logic import Modulo_Muebles as Muebles
 
-from Modulos.Modulo_System import (
+from logic.Modulo_System import (
     CleanScreen
 )
 
-from Modulos.Modulo_ShowPrint import (
+from interface.Modulo_ShowPrint import (
     Title,
     Continue,
     Separator
 )
 
-from Modulos.Modulo_Language import (
+from data.Modulo_Language import (
     get_text as Lang,
     YesNo
 )
@@ -25,6 +25,7 @@ def Menu_Muebles():
         print(
             f'1. {Lang("corner_shelving")}\n'
             f'2. {Lang("table")}\n'
+            f'3. Rampa\n'
             f'0. {Lang("exit")}'
         )
         option = input(f"{Lang('set_option')}: ")
@@ -43,6 +44,9 @@ def Menu_Muebles():
 
         elif option == '2':
             furniture = Furniture('table')
+
+        elif option == '3':
+            furniture = Furniture('ramp')
             
         elif option == '0':
             loop = False
@@ -117,6 +121,18 @@ def Furniture(furniture='corner_shelving'):
                 height=height,
                 round_number=False
             )
+        elif furniture == 'ramp':
+            text = (
+                f'Tamaño de entrada: {width} X {height}\n'
+                f'Grosor de entrada: {thickness}\n\n'
+            )
+            text += Muebles.Ramp(
+                thickness=thickness,
+                width=width,
+                height=height,
+                round_number=False
+            )
+            return text
     else:
         return None
 

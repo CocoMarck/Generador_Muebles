@@ -1,0 +1,51 @@
+Obtener las partes necesarias para hacer una rampa.
+Unicamente se necesitan dos datos, el largo y el alto de la rampa. "Altura" y "Anchura"
+
+
+Si la "Altura" y la "Anchura" son iguales, entonces se trata de un triangulo equilatero, por lo que el tercer lado del triangulo sera igual a la "Altura" o a la "Anchura".
+tercer_lado = Altura
+
+
+Si la "Altura" y la "Anchura" son valores distintos, entonces se trata de un triangulo rectangulo, por lo que el tercer lado del triangulo sera igual a la; raiz de la suma de "Altura al cuadrado" mas la "Anchura al cuadrado", donde la "Altura" y la "Anchura" serian los catetos, y el tercer lado representaria la hipotenusa:
+tercer_lado = √( Altura^2 + Anchura^2 )
+
+
+Vamos a utilizar el valor de el "tercer_lado" sobre dos.
+tercer_lado_mitad = tercer_lado/2
+
+
+
+
+Ahora en base a estos datos, obtendremos las partes necesarias para armar la rampa:
+Dos triangulos con las siguientes medidas:
+Altura X Anchura X tercer_lado
+
+
+Un rectangulo posicionado en arriba de los triangulos, de las siguientes medidas:
+tercer_lado X tercer_lado_mitad
+
+
+Un rectangulo posicionado abajo de los triangulos, de las siguientes medidas:
+Anchura X tercer_lado_mitad
+
+
+Un rectangulo posicionado en el lado recto vertical de los triangulos, de las siguientes medidas:
+Altura X tercer_lado_mitad
+
+
+
+
+Un ejemplo de aplicación de la función:
+Altura = 4, Anchura = 8
+
+La altura y la anchura son valores distintos, entonces el tercer lado es:
+tercer_lado = √( 4^2 + 8^2 ) = 8.94427191
+
+tercer_lado_mitad = 8.94427191/2 = 4.472135955
+
+
+Partes:
+2 Triangulos de:        4 X 8 X 8.9
+1 Rectangulo arriba:    8.9 X 4.4
+1 Rectangulo abajo:     8 X 4.4
+1 Rectangulo lateral:   4 X 4.4

@@ -1,0 +1,45 @@
+a = 4
+b = 8
+
+
+
+
+# Dependiendo si "a" y "b" son distintos: Sacar hipotenusa o el tercer lado
+if a == b:
+    c = a
+else:
+    c = ( (a*a) + (b*b) )**(0.5)
+
+
+
+
+# Partes
+dict_parts = {
+    'triangle' : [2, a, b, c],
+    'rect-up' : [1, c, c/2],
+    'rect-down' : [1, b, c/2],
+    'rect-lateral' : [1, a, c/2]
+}
+
+
+
+
+# Mostrar lo necesario
+text = 'Rampa\n\n'
+for key in dict_parts.keys():
+    part = dict_parts[key]
+    
+    if len(part) == 4:
+        text += (
+            f'{part[0]} {key}:\n'
+            f'    {part[1]} X {part[2]} X {part[3]}'
+        )
+    else:
+        text += (
+            f'{part[0]} {key}:\n'
+            f'    {part[1]} X {part[2]}'
+        )
+    
+    text += '\n\n'
+    
+print(text)

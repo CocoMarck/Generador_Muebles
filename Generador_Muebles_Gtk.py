@@ -3,9 +3,9 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
-from Interface import Modulo_Util_Gtk as Util_Gtk
-from Modulos import Modulo_Muebles as Muebles
-from Modulos.Modulo_Language import get_text as Lang
+from interface import Modulo_Util_Gtk as Util_Gtk
+from logic import Modulo_Muebles as Muebles
+from data.Modulo_Language import get_text as Lang
 
 
 class Window_Main(Gtk.Window):
@@ -193,7 +193,7 @@ class Dialog_Furniture(Gtk.Dialog):
         dialog = Dialog_View_TextImage(
             self,
             text=text_furniture,
-            image_from_file=f'./Images/furniture_{self.furniture}.png'
+            image_from_file=f'./resources/images/furniture_{self.furniture}.png'
         )
         dialog.run()
         dialog.destroy()
